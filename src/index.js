@@ -8,10 +8,12 @@ const renderApp = () =>
   ReactDOM.render(<App />, document.getElementById('root'));
 
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
 if ('serviceWorker' in navigator) {
   if (!navigator.serviceWorker.controller)
     serviceWorker.register({
       onActivated: renderApp,
+      onFail: renderApp,
     });
   else {
     renderApp();

@@ -53,6 +53,12 @@ export function register(config) {
         registerValidSW(swUrl, config);
       }
     });
+  } // Execute callback
+  else if (config && config.onFail) {
+    console.log(
+      'This web app is running in development environment. Service workers must be enabled in production'
+    );
+    config.onFail();
   }
 }
 

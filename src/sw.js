@@ -44,13 +44,13 @@ self.addEventListener('fetch', event => {
   if (event.request.url === APIurl) {
     event.respondWith(
       (async function() {
-        var cache = await caches.open(runtimeCacheName);
-        var cachedFiles = await cache.match(event.request);
+        let cache = await caches.open(runtimeCacheName);
+        let cachedFiles = await cache.match(event.request);
         if (cachedFiles) {
           return cachedFiles;
         } else {
           try {
-            var response = await fetch(event.request);
+            let response = await fetch(event.request);
             await cache.put(event.request, response.clone());
             return response;
           } catch (e) {
